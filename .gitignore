@@ -1,0 +1,19 @@
+# Data 
+data/
+
+*.vcf.gz
+*.vcf
+*.bam
+
+# Plink
+*.bed
+*.fam
+*.bim
+*.log
+
+# Containers
+containers/
+
+*.sif
+
+
