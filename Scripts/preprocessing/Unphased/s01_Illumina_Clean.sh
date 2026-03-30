@@ -1,17 +1,17 @@
 #!/bin/bash
-# s01_Illumina_Clean
+# s01_Illumina_Clean_v2
 #
-# Cameron Brown 20Mar2026
+# Cameron Brown 30Mar2026
 
 # Crescent2 script
 # Note: this script should be run on a compute node
-# qsub s01_Illumina_Clean
+# qsub s01_Illumina_Clean_v2
 
 # PBS directives
 #---------------
 
-#PBS -N s01_illumina_clean
-#PBS -l nodes=1:ncpus=8
+#PBS -N s01_illumina_clean_v2
+#PBS -l nodes=1:ncpus=16
 #PBS -l walltime=01:00:00
 #PBS -q one_hour
 #PBS -m abe
@@ -30,7 +30,7 @@ cd "$PBS_O_WORKDIR"
 threads="${PBS_NCPUS:-${NCPUS:-1}}"
 
 # Stop at runtime errors
-set -e
+set -e 
 
 # Folders and files
 base_folder="/mnt/beegfs/project/Alexey_Larionov/IBD-2026"
@@ -71,33 +71,29 @@ echo "----------------------------------------"
 echo ""
 
 # Filter to:
+# - PASS variants only (-f PASS)
 # - biallelic sites only (-m2 -M2)
 # - SNPs only (-v snps)
-# - autosomes only (chr1-chr22)
-# Output as compressed VCF (-Oz)
-singularity exec \
-  --bind /mnt/beegfs \
-  "${container}" bcftools view \
-  --threads "${threads}" \
-  -m2 -M2 \
-  -v snps \
-  -r "${autosomes}" \
-  -Oz \
-  -o "${output_vcf}" \
-  "${input_vcf}"
+# - autosomes only (chr1–chr22 via -r)
+# - ensure coordinate-sorted output (bcftools sort)
+# - output as compressed VCF (.vcf.gz, -Oz)
+# - index the final file for downstream tools
+singularity exec --bind /mnt/beegfs "${container}" bash -c "
+  bcftools view \
+    --threads ${threads} \
+    -m2 -M2 \
+    -f PASS \
+    -v snps \
+    -r ${autosomes} \
+    -Ou ${input_vcf} | \
+  bcftools sort \
+    -Oz -o ${output_vcf} && \
+  bcftools index -t ${output_vcf}
+"
 
 echo ""
-echo "Filtering complete"
+echo "Filtering, sorting and indexing complete"
 date
-echo ""
-
-# Indexing
-echo "Indexing VCF..."
-singularity exec --bind /mnt/beegfs "${container}" bcftools index \
-  --threads "${threads}" \
-  -t "${output_vcf}"
-
-echo "Indexing complete"
 echo ""
 
 # Final confirmation
@@ -132,6 +128,14 @@ singularity exec --bind /mnt/beegfs "${container}" \
 bcftools query -f '%CHROM\n' "${output_vcf}" | sort -u
 
 echo ""
+
+echo "Checking FILTER distribution Before ..."
+singularity exec --bind /mnt/beegfs "${container}" \
+  bcftools query -f '%FILTER\n' "${input_vcf}" | sort | uniq -c
+  
+echo "Checking FILTER distribution After ..."
+singularity exec --bind /mnt/beegfs "${container}" \
+  bcftools query -f '%FILTER\n' "${output_vcf}" | sort | uniq -c
 
 echo "========================================"
 echo "VALIDATION COMPLETE"
