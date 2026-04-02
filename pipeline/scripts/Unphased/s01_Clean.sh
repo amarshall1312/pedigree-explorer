@@ -1,16 +1,16 @@
 #!/bin/bash
-# 01_family8_illumina_clean
+# s01_Illumina_Clean_v2
 #
 # Cameron Brown 30Mar2026
 
 # Crescent2 script
 # Note: this script should be run on a compute node
-# qsub 01_family8_illumina_clean
+# qsub s01_Illumina_Clean_v2
 
 # PBS directives
 #---------------
 
-#PBS -N 01_family8_illumina_clean
+#PBS -N s01_illumina_clean_v2
 #PBS -l nodes=1:ncpus=16
 #PBS -l walltime=01:00:00
 #PBS -q one_hour
@@ -35,10 +35,9 @@ set -e
 # Folders and files
 base_folder="/mnt/beegfs/project/Alexey_Larionov/IBD-2026"
 container="${base_folder}/containers/plink.sif"
-input_vcf="${base_folder}/data/raw/family_8/pb/2129547_Y430.GCA_000001405.deepvariant.phased.bgzip.vcf.gz"
-output_folder="${base_folder}/data/raw/family_8/pb/clean"
-
-output_vcf="${output_folder}/2129544_Y430.GCA_000001405.deepvariant.phased.clean.vcf.gz" 
+input_vcf="${base_folder}/data/raw/illumina/CEPH1463.GRCh38.illumina-dragen.oa.vcf.gz"
+output_folder="${base_folder}/data/processed/illumina/clean"
+output_vcf="${output_folder}/illumina.clean.vcf.gz"
 
 # Autosomes only
 autosomes="chr1,chr2,chr3,chr4,chr5,chr6,chr7,chr8,chr9,chr10,chr11,chr12,chr13,chr14,chr15,chr16,chr17,chr18,chr19,chr20,chr21,chr22"
