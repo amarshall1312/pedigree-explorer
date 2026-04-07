@@ -16,11 +16,12 @@ containers/
 
 *.sif
 
+
 #Logs
 Logs/
 
 *.o*
 *.e*
 *.log
-
+*.cr2-pbs
 
