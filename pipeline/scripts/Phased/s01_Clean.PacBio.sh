@@ -48,7 +48,7 @@ log_folder="${pipeline_folder}/logs"
 container="${base_folder}/github_repo/pedigree-explorer/pipeline/config/Simple_Container.sif"
 
 # Outputs
-final_vcf="${merged_vcf_folder}/pacbio.merged.clean.biallelic.nomiss.vcf.gz"
+final_vcf="${merged_vcf_folder}/pacbio.merged.clean.vcf.gz"
 log_file="${log_folder}/s01_pacbio_cleanmerge_$(date +%Y%m%d_%H%M%S).log"
 
 # Autosomes only
@@ -205,7 +205,7 @@ echo ""
 
 echo "Checking number of QUAL < 10..."
 singularity exec --bind /mnt/beegfs "${container}" \
-  bcftools view -H -i 'QUAL<20' "${final_vcf}" | wc -l
+  bcftools view -H -i 'QUAL<10' "${final_vcf}" | wc -l
 
 echo ""
 
