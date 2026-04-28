@@ -25,14 +25,20 @@
 # INSTRUCTIONS
 # ----------------------------
 # 1. Edit ONLY the variables in the "USER INPUTS" section below.
+#
+#
 # 2. Set:
 #    - base_folder: your main project directory
 #    - input_vcf: full path to your input VCF (.vcf.gz)
 #    - container: full path to the Singularity/Apptainer container with bcftools
 #    - min_qual: minimum QUAL threshold (e.g. 20 recomended)
+#
 # 3. The container definition (.def file) used to build the container is available on the project GitHub.
+#
 # 4. Do NOT modify anything below the "DO NOT EDIT" line unless you understand the pipeline.
+#
 # 5. Ensure the input VCF is bgzipped and indexed (.tbi file present).
+#
 # 6. Submit the script using:
 #       qsub s01_Filter_Illumina
 #

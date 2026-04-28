@@ -24,15 +24,22 @@
 # ----------------------------
 # INSTRUCTIONS
 # ----------------------------
+#
 # 1. Run s01_Filter_Illumina before running this script.
+#
 # 2. Edit ONLY the variables in the "USER INPUTS" section below.
+#
 # 3. Set:
 #    - base_folder: your main project directory
 #    - container: full path to the Singularity/Apptainer container with PLINK2
+#
 # 4. This script expects the filtered VCF produced by s01_Filter_Illumina:
 #       ${base_folder}/data/processed/Illumina_Preprocessing/clean_vcf/illumina_filtered.vcf.gz
+#
 # 5. The container definition (.def file) used to build the container is available on the project GitHub.
+#
 # 6. Do NOT modify anything below the "DO NOT EDIT" line unless you understand the pipeline.
+#
 # 7. Submit the script using:
 #       qsub s02_Illumina_PLINK
 #

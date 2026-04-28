@@ -24,24 +24,35 @@
 # ----------------------------
 # INSTRUCTIONS
 # ----------------------------
+#
 # 1. Run s01_Filter_Illumina and s02_Illumina_PLINK before running this script.
+#
 # 2. Edit ONLY the variables in the "USER INPUTS" section below.
+#
 # 3. Set:
 #    - base_folder: your main project directory
 #    - container: full path to the Singularity/Apptainer container
 #    - perl_script: full path to add-map-plink.pl
 #    - map_folder: full path to the genetic map files
+#
 # 4. A precomputed GRCh38 genetic recombination map is required.
 #    Publicly available Beagle genetic maps (University of Washington) can be downloaded from:
 #    https://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/
-#    These maps must be placed in map_folder. They are reformatted within the script and used
-#    to annotate the PLINK BIM file with genetic distances (cM).
+#    The selected map_folder must match chromosome naming in the PLINK BIM file:
+#    - use chr_in_chrom_field if chromosomes are named chr1, chr2, ...
+#    - use no_chr_in_chrom_field if chromosomes are named 1, 2, ...
+#    These maps are reformatted within the script and used to annotate the PLINK BIM file
+#    with genetic distances (cM).
+#
 # 5. This script expects the PLINK files produced by s02_Illumina_PLINK:
 #       ${base_folder}/data/processed/Illumina_Preprocessing/plink/final_plink_files/illumina_filtered.bed
 #       ${base_folder}/data/processed/Illumina_Preprocessing/plink/final_plink_files/illumina_filtered.bim
 #       ${base_folder}/data/processed/Illumina_Preprocessing/plink/final_plink_files/illumina_filtered.fam
+# 
 # 6. The container definition (.def file) and add-map-plink.pl script are available on the project GitHub.
+# 
 # 7. Do NOT modify anything below the "DO NOT EDIT" line unless you understand the pipeline.
+# 
 # 8. Submit the script using:
 #       qsub s03_Add_Genetic_Map_Illumina
 #
@@ -51,7 +62,6 @@
 # - Raw intermediate VCF (unsorted)
 # - Basic validation printed to stdout
 # ----------------------------
-
 # ----------------------------
 # USER INPUTS (EDIT THESE ONLY)
 # ----------------------------

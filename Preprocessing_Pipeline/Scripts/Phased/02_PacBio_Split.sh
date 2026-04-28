@@ -25,14 +25,20 @@
 # INSTRUCTIONS
 # ----------------------------
 # 1. Run s01_PacBio_Filter before running this script.
+#
 # 2. Edit ONLY the variables in the "USER INPUTS" section below.
+#
 # 3. Set:
 #    - base_folder: your main project directory
 #    - container: full path to the Singularity/Apptainer container with bcftools
+#
 # 4. This script expects the merged filtered VCF produced by s01_PacBio_Filter:
 #       ${base_folder}/data/processed/PacBio_Preprocessing/merged_vcf/pacbio.merged.filtered.vcf.gz
+#
 # 5. The container definition (.def file) used to build the container is available on the project GitHub.
+#
 # 6. Do NOT modify anything below the "DO NOT EDIT" line unless you understand the pipeline.
+#
 # 7. Submit the script using:
 #       qsub s02_PacBio_Split
 #
