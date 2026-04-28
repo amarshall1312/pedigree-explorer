@@ -23,3 +23,6 @@ containers/
 *.log
 *.cr2-pbs
 
+#Old Pipeline
+
+pipeline/
