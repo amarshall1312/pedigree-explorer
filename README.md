@@ -105,6 +105,28 @@ singularity build my_container.sif Complete_Container.def
 
 ---
 
+## Configuration
+
+Each script contains a **USER INPUTS** section near the top — this is the only part you need to edit. The variables present vary by script, but the three common ones are:
+
+| Variable | Description |
+|----------|-------------|
+| `base_folder` | Your project root directory |
+| `container` | Full path to your built `.sif` container file |
+| `input_vcf` / `input_vcf_folder` | Path to your input VCF file or folder |
+
+Example:
+
+```bash
+base_folder="/scratch/username/project"
+container="/scratch/username/my_container.sif"
+input_vcf="/scratch/username/data/input.vcf.gz"
+```
+
+Do **not** modify anything below the `# DO NOT EDIT BELOW` line in each script.
+
+---
+
 ## Illumina (Unphased) Pipeline
 
 Run these three scripts in order.
