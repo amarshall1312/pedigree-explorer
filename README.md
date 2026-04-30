@@ -35,8 +35,42 @@ Preprocessing_Pipeline/
 - PBS/Torque job scheduler
 - Singularity or Apptainer
 - A built container (`.sif` file) — see [Building the Container](#building-the-container)
-- bgzipped and tabix-indexed input VCF files (`.vcf.gz` + `.tbi`)
+- bgzipped and tabix-indexed input VCF files (`.vcf.gz` + `.tbi`) — see [Input File Requirements](#input-file-requirements) below
 - GRCh38 genetic recombination map files (Illumina pipeline only) — available from the [Beagle genetic maps page](https://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/)
+
+---
+
+## Input File Requirements
+
+The two pipelines expect different input VCF formats.
+
+### Illumina pipeline
+
+Requires a **single multi-sample VCF** (`.vcf.gz`) containing all individuals. This is the standard output from array genotyping or joint-calling pipelines (e.g. GATK GenotypeGVCFs). The file must be bgzipped and tabix-indexed:
+
+```bash
+bgzip  my_cohort.vcf
+tabix -p vcf my_cohort.vcf.gz
+```
+
+### PacBio pipeline
+
+Requires **one VCF per sample** (`.vcf.gz` + `.tbi`), all placed in the same folder. If you have a merged/joint-called VCF, split it into per-sample files with `bcftools`:
+
+```bash
+# Split a multi-sample VCF into one file per sample
+bcftools +split \
+  -Oz \
+  -o /path/to/per_sample_vcfs/ \
+  my_cohort.vcf.gz
+
+# Index every resulting file
+for f in /path/to/per_sample_vcfs/*.vcf.gz; do
+    bcftools index -t "$f"
+done
+```
+
+Point `input_vcf_folder` in `01_PacBio_Filter.sh` at the directory containing these per-sample files.
 
 ---
 
