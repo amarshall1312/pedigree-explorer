@@ -55,22 +55,29 @@ bcftools index -t output.vcf.gz
 
 ### PacBio pipeline
 
-Requires **one VCF per sample** (`.vcf.gz` + `.tbi`), all placed in the same folder. If you have a merged/joint-called VCF, split it into per-sample files with `bcftools -s`:
+Requires **one VCF per sample** (`.vcf.gz` + `.tbi`), all placed in the same folder.
+
+If your data is in a single multi-sample VCF, split it into per-sample files using `bcftools`:
 
 ```bash
-# Split a multi-sample VCF into one file per sample
+# Extract sample names and write one VCF per sample
 bcftools query -l cohort.vcf.gz | while read sample; do
     bcftools view -s "$sample" -Oz -o "${sample}.vcf.gz" cohort.vcf.gz
     bcftools index -t "${sample}.vcf.gz"
 done
-
-# Index every resulting file
-for f in /path/to/per_sample_vcfs/*.vcf.gz; do
-    bcftools index -t "$f"
-done
 ```
 
-Point `input_vcf_folder` in `01_PacBio_Filter.sh` at the directory containing these per-sample files.
+This will generate:
+
+```
+sample1.vcf.gz
+sample1.vcf.gz.tbi
+sample2.vcf.gz
+sample2.vcf.gz.tbi
+...
+```
+
+Point `input_vcf_folder` in `01_PacBio_Filter.sh` at the directory containing these files.
 
 ---
 
