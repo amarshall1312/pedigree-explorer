@@ -118,9 +118,9 @@ Each script contains a **USER INPUTS** section near the top — this is the only
 Example:
 
 ```bash
-base_folder="/scratch/username/project"
-container="/scratch/username/my_container.sif"
-input_vcf="/scratch/username/data/input.vcf.gz"
+base_folder="/path/to/your/project"
+container="/path/to/your/container.sif"
+input_vcf="/path/to/your/data/input.vcf.gz"
 ```
 
 Do **not** modify anything below the `# DO NOT EDIT BELOW` line in each script.
@@ -286,6 +286,7 @@ data/processed/
 - All scripts print a **VALIDATION** section at the end of each job. Check the scheduler output logs (`.o<jobid>` for PBS-style schedulers) to confirm steps completed successfully. Example logs are provided in `Preprocessing_Pipeline/examples/`.
 - `add-map-plink.pl` is sourced from the [IBIS repository](https://github.com/williamslab/ibis) and is included here for convenience.
 - Scripts use `--bind /mnt/beegfs` for Singularity/Apptainer. Replace this with your HPC storage path (e.g. `/scratch`, `/data`, `/home`) if different.
+I could change this thin the scripts to be an input at the start so only have to change once
 
 ---
 
