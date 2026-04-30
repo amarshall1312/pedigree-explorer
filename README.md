@@ -37,7 +37,7 @@ Preprocessing_Pipeline/
 
 ## Prerequisites
 
-- PBS/Torque job scheduler
+- PBS job scheduler
 - Singularity or Apptainer
 - A built container (`.sif` file) — see [Building the Container](#building-the-container)
 - bgzipped and tabix-indexed input VCF files (`.vcf.gz` + `.tbi`) — see [Input File Requirements](#input-file-requirements) below
