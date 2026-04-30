@@ -49,20 +49,20 @@ The two pipelines expect different input VCF formats.
 Requires a **single multi-sample VCF** (`.vcf.gz`) containing all individuals. This is the standard output from array genotyping or joint-calling pipelines (e.g. GATK GenotypeGVCFs). The file must be bgzipped and tabix-indexed:
 
 ```bash
-bgzip  my_cohort.vcf
-tabix -p vcf my_cohort.vcf.gz
+bcftools view -Oz -o output.vcf.gz input.vcf
+bcftools index -t output.vcf.gz
 ```
 
 ### PacBio pipeline
 
-Requires **one VCF per sample** (`.vcf.gz` + `.tbi`), all placed in the same folder. If you have a merged/joint-called VCF, split it into per-sample files with `bcftools`:
+Requires **one VCF per sample** (`.vcf.gz` + `.tbi`), all placed in the same folder. If you have a merged/joint-called VCF, split it into per-sample files with `bcftools -s`:
 
 ```bash
 # Split a multi-sample VCF into one file per sample
-bcftools +split \
-  -Oz \
-  -o /path/to/per_sample_vcfs/ \
-  my_cohort.vcf.gz
+bcftools query -l cohort.vcf.gz | while read sample; do
+    bcftools view -s "$sample" -Oz -o "${sample}.vcf.gz" cohort.vcf.gz
+    bcftools index -t "${sample}.vcf.gz"
+done
 
 # Index every resulting file
 for f in /path/to/per_sample_vcfs/*.vcf.gz; do
