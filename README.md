@@ -5,7 +5,12 @@ A preprocessing pipeline for preparing short-read (Illumina) and long-read (PacB
 The pipeline is designed for PBS HPC clusters (tested on Crescent2) and uses [Singularity/Apptainer](https://apptainer.org/) containers to manage software dependencies.
 
 ---
+## Pipeline Overview
 
+- **Illumina (unphased):** Filter → PLINK conversion → Genetic map annotation  
+- **PacBio (phased):** Per-sample filter → Merge → Chromosome split
+
+---
 ## Repository Structure
 
 ```
@@ -258,7 +263,7 @@ data/processed/
 
 - All scripts print a **VALIDATION** section at the end of each job. Check PBS output logs (`.o<jobid>`) to confirm steps completed successfully. Example logs are provided in `Preprocessing_Pipeline/examples/`.
 - `add-map-plink.pl` is sourced from the [IBIS repository](https://github.com/williamslab/ibis) and is included here for convenience.
-- Scripts use `--bind /mnt/beegfs` for Singularity; adjust this bind path to match your HPC storage mount point.
+- Scripts use `--bind /mnt/beegfs` for Singularity/Apptainer. Replace this with your HPC storage path (e.g. `/scratch`, `/data`, `/home`) if different.
 
 ---
 
