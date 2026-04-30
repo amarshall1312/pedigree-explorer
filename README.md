@@ -121,6 +121,10 @@ Annotates the PLINK BIM file with genetic distances (cM) using `add-map-plink.pl
 | `perl_script` | Path to `add-map-plink.pl` |
 | `map_folder` | Path to GRCh38 genetic map files (`.map`) |
 
+> **Downloading genetic map files:** GRCh38 PLINK-format genetic maps (University of Washington / Beagle) can be downloaded from:
+> **https://bochet.gcc.biostat.washington.edu/beagle/genetic_maps/**
+> Choose `plink.GRCh38.map.zip` (chromosomes named `chr1`, `chr2`, … → use `chr_in_chrom_field`) or the equivalent without the `chr` prefix (→ use `no_chr_in_chrom_field`).
+
 > **Chromosome naming:** use `chr_in_chrom_field` if your BIM uses `chr1`, `chr2`, … or `no_chr_in_chrom_field` if it uses `1`, `2`, …
 
 **Output:**
