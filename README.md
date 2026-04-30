@@ -2,7 +2,7 @@
 
 A preprocessing pipeline for preparing short-read (Illumina) and long-read (PacBio) genotype data for identity-by-descent (IBD) analysis with [IBIS](https://github.com/williamslab/ibis) and [RaPID](https://github.com/ZhiGroup/RaPID).
 
-The pipeline is designed for PBS/Torque HPC clusters (tested on Crescent2) and uses [Singularity/Apptainer](https://apptainer.org/) containers to manage software dependencies.
+The pipeline is designed for PBS HPC clusters (tested on Crescent2) and uses [Singularity/Apptainer](https://apptainer.org/) containers to manage software dependencies.
 
 ---
 
