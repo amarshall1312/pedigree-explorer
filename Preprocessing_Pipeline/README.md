@@ -1,6 +1,6 @@
 ## Data Preparation
 
-A preprocessing pipeline for preparing short-read (Illumina) and long-read (PacBio) genotype data for identity-by-descent (IBD) analysis with [IBIS](https://github.com/williamslab/ibis) and [RaPID](https://github.com/ZhiGroup/RaPID).
+A preprocessing pipeline for preparing short-read (Illumina) and long-read (PacBio) genotype data for identity-by-descent (IBD) analysis with [IBIS](https://github.com/williamslab/ibis), [RaPID](https://github.com/ZhiGroup/RaPID) and [Truffle](https://github.com/adimitromanolakis/truffle-website)
 
 The pipeline is designed for HPC clusters with a `qsub`-compatible (PBS-style) job scheduler (tested on Crescent2) and uses [Singularity/Apptainer](https://apptainer.org/) containers to manage software dependencies.
 
