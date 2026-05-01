@@ -186,7 +186,7 @@ See [IBD_Analysis/IBIS/README.md](IBD_Analysis/IBIS/README.md) for full document
 
 TRUFFLE detects IBD by identifying long stretches of consecutive IBS markers between pairs of individuals. It does not require haplotype phasing or a population genetic map, making it suitable for rapid deployment across populations. Parameter optimisation (`-L` length multiplier and `--ibs1markers`/`--ibs2markers` thresholds) is required for distant relatives in WGS data.
 
-📖 See [IBD_Analysis/TRUFFLE/README.md](IBD_Analysis/TRUFFLE/README.md) for full documentation.
+See [IBD_Analysis/TRUFFLE/README.md](IBD_Analysis/TRUFFLE/README.md) for full documentation.
 
 ### RaPID
 
@@ -196,7 +196,7 @@ TRUFFLE detects IBD by identifying long stretches of consecutive IBS markers bet
 
 RaPID detects IBD using a positional Burrows-Wheeler transform (PBWT) approach on phased data. In this project, RaPID is applied to PacBio long-read data after splitting into per-chromosome VCFs.
 
-📖 See [IBD_Analysis/RaPID/README.md](IBD_Analysis/RaPID/README.md) for full documentation.
+See [IBD_Analysis/RaPID/README.md](IBD_Analysis/RaPID/README.md) for full documentation.
 
 ---
 
@@ -233,7 +233,7 @@ chromosome  start_bp  end_bp  sample_pair_name
 
 Conversion scripts are provided in each IBD tool's folder to convert tool-specific output formats (`.segments`, `.seg`) into this BED format.
 
-📖 See [GUI/README.md](GUI/README.md) for full documentation including building standalone executables.
+See [GUI/README.md](GUI/README.md) for full documentation including building standalone executables.
 
 ---
 
