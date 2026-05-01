@@ -34,7 +34,7 @@ Preprocessing_Pipeline/
 │   └── Add_Map_Plink/
 │       └── add-map-plink.pl                # Perl script for genetic map annotation
 ├── config/
-│   ├── Simple_Container.def    # Singularity definition (latest tool versions)
+│   ├── Simple_Container.def    # Singularity definition (latest tool versions 01/05/26)
 │   └── Complete_Container.def  # Singularity definition (pinned tool versions)
 └── examples/
     ├── Illumina/               # Example PBS job logs for Illumina pipeline
