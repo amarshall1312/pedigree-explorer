@@ -89,9 +89,36 @@ The script tests **three parameter configurations** to assess the effect of dete
 - **-g** — interpolated genetic map file  
 - **-o** — output prefix  
 
-**Note:** The lenient setting (**-w 500**) exceeds the 300-SNP maximum defined in the author-provided `parameter_estimation.py` script. Results obtained under this configuration should therefore be interpreted with caution, as they fall outside the developer-recommended range. However, in our analysis, this setting provided improved sensitivity for detecting longer IBD segments.
----
+**Note**:The lenient setting (**-w 500**) exceeds the 300-SNP maximum defined in the author-provided `parameter_estimation.py` script. Results obtained under this configuration should therefore be interpreted with caution, as they fall outside the developer-recommended range. However, in our analysis, this setting provided improved sensitivity for detecting longer IBD segments.
 
+---
+## Usage
+
+**Submit Step 1:**
+```bash
+qsub s01_map_interpolating.sh
+```
+**The script performs the following steps:**
+
+1. Activates conda enviroment (rapid_env) and loads required modules
+2. Interpolates GRCh38 genetic map to VCF site positions for each chromosome (chr1–22)
+
+**Submit Step 2:**
+```bash
+qsub s02_rapid_3window_size.sh
+```
+**The script performs the following steps:**
+
+3. Runs RaPID per chromosome for each window size configuration.
+4. Merges per-chromosome results into a single file per window size
+
+**Expected runtime:** 
+- ~1 minute for genetic map interpolation  
+- ~1 minute for running RaPID on two samples  
+
+For large-scale datasets, see:  
+Naseri, A., Liu, X., Tang, K. et al. (2019). *RaPID: ultra-fast, powerful, and accurate detection of segments identical by descent (IBD) in biobank-scale cohorts*. Genome Biology, 20, 143.  
+https://doi.org/10.1186/s13059-019-1754-8
 
 ---
 ## Citation
