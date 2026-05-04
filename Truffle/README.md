@@ -43,7 +43,7 @@ TRUFFLE/
 TRUFFLE requires a **single multi-sample VCF** containing all individuals to be compared. The VCF should be:
 - bgzipped (`.vcf.gz`)
 - tabix-indexed (`.tbi`)
-- Filtered for autosomal biallelic SNPs (use the [preprocessing pipeline](.//Preprocessing_Pipeline/README.md))
+- Filtered for autosomal biallelic SNPs (use the [preprocessing pipeline](../Preprocessing_Pipeline/README.md))
 - GRCh38 (or any consistent reference — TRUFFLE is reference-agnostic)
 
 ---
