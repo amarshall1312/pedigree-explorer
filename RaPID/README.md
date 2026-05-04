@@ -52,10 +52,30 @@ The script contains a **USER-DEFINED INPUTS** section near the top — this is t
 | `SCRIPT_DIR` | Script directory for interpolate_loci.py |
 | `MAP_DIR` | Genetic Map directory for interpolating VCFs |
 | `VCF_DIR` | VCF directory |
-| `VCF_PREFIX` | VCF prefix |
-| `VCF_SUFFIX` | VCF suffix |
 | `INTERPOLATED_MAP_DIR` | Chromosome specific interpolated map directory  |
 | `OUTPUT_BASE` | Output Directory |
+
+Example:
+
+```bash
+BASE_DIR="/path/to/your/project"
+SCRIPT_DIR="${BASE_DIR}/script/directory/interpolate_loci.py"
+MAP_DIR="${BASE_DIR}/genetic/maps"
+VCF_DIR="${BASE_DIR}/path/to/split/vcfs"
+INTERPOLATED_MAP_DIR="$BASE_DIR/platinum_pedigree_dataset/interpolated_maps"
+OUTPUT_BASE="$BASE_DIR/platinum_pedigree_dataset/results"
+```
+---
+
+## Parameter Configurations
+
+The script tests **three parameter configurations** to assess the effect of detection stringency on IBD calls. These configurations vary by minimum segment length, minimum marker count, and error rate tolerance:
+
+| Configuration | `-w` (window size) | `-r` (runs) | `-s`  (successes)| `-d` (min cM)| Use case |
+|---------------|---------------|-----------------|--------------|----------|----------|
+| **Strict** | 75 | 10 | 2 | 5 |Exploratory analysis; captures shorter segments at risk of background noise |
+| **Default** (literature-recommended) | 250 | 10 | 2 | 5 |Robust default for general relatedness estimation; from Seidman et al. (2020) |
+| **Lenient** | 500 | 10 | 2 | 5 |High-specificity analyses (validation, fine-mapping); may underestimate total sharing |
 
 
 
