@@ -79,7 +79,7 @@ OUTPUT_BASE="$BASE_DIR/platinum_pedigree_dataset/results"
 
 ## Parameter Configurations
 
-The script tests **three parameter configurations** to assess the effect of detection stringency on IBD calls. These configurations vary by minimum segment length, minimum marker count, and error rate tolerance:
+The script tests **one parameter configuration** to assess the effect of detection stringency on IBD calls. These configuration is **window size -w** alone. 
 
 | Configuration | `-w` (window size) | `-r` (runs) | `-s`  (successes)| `-d` (min cM)| Use case |
 |---------------|---------------|-----------------|--------------|----------|----------|
@@ -189,7 +189,7 @@ chromosome  start_bp  end_bp  sample_pair
 - Process chromosomes individually; concatenating maps before interpolation causes RaPID to process only the last chromosome
 - The merge step targets `results.max.gz` only — not the numbered intermediate files
 - The author-provided `parameter_estimation.py` script produced division-by-zero errors and negative window-size values in this analysis; window sizes were therefore set manually
-- - RaPID source and genetic maps: https://github.com/ZhiGroup/RaPID
+- RaPID source and genetic maps: https://github.com/ZhiGroup/RaPID
 
 
 ---
