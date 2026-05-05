@@ -141,6 +141,14 @@ pedigree-explorer/
 ```
 
 ---
+## Flow diagram of the pipeline starting with Platinum Pedigree data
+<img width="939" height="1287" alt="image" src="https://github.com/user-attachments/assets/0e69ff8c-4abe-4792-9e93-778db2bcec30" />
+
+---
+## Flow diagram of the pipeline starting with Family 8 data
+<img width="808" height="1194" alt="image" src="https://github.com/user-attachments/assets/fd2ee779-a448-4458-8412-a2eaf7026473" />
+
+
 
 ## Data Preprocessing
 
