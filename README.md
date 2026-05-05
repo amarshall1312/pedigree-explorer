@@ -2,8 +2,6 @@
 
 **A framework for detection and visualisation of identical-by-descent (IBD) regions in human familial sequencing data, supporting the analysis of both phased and un-phased data.**
 
-![Platinum Pedigree Tree](images/platinum-pedigree-tree.png "Platinum Pedigree Tree")
-
 ---
 
 ## Abstract
@@ -87,6 +85,9 @@ Both datasets provide un-phased short-read (Illumina) and block-phased long-read
 | **IHCAPX8** | Cranfield supervisors | Illumina + PacBio VCFs | Restricted (UK GDPR) | — |
 
 All data is mapped to the **GRCh38** reference (Schneider et al., 2017). Analyses are restricted to autosomal chromosomes 1–22, excluding mitochondrial and sex chromosomes to reduce analytical complexity, improve consistency across tools, and focus the workflow on directly comparable genomic regions.
+
+### Selected individuals from the Platinum Pedigree data, adapted from the Platinum Pedigree GitHub repository
+<img width="938" height="517" alt="image" src="https://github.com/user-attachments/assets/b63b4709-7c63-4ea1-b51f-730b8c6a4003" />
 
 ---
 
