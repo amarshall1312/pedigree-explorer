@@ -26,7 +26,6 @@ random projections covers the agreed region.
 ```
 RaPID/
 ├── README.md                # This file
-├── rapid_env.yml            # Conda Environment used for running the script
 └── Scripts/
     └── s01_map_interpolating.sh             # Step 1: Interpolate genetic map to VCF sites
     └── s02_rapid_3window_size.sh            # Step 2: Run RaPID across three different window sizes
